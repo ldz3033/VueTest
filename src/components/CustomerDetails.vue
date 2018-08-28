@@ -60,7 +60,7 @@
         },
         methods: {
             fetchCustomers(id) {
-                this.$axios.get("http://localhost:3000/users/" + id)
+                this.$axios.get("/users/" + id)
                     .then((response) => {
                         console.log(response);
                         this.customer = response.data;
@@ -68,7 +68,7 @@
             },
             deleteCustomer(id) {
                 // console.log(id);
-                this.$axios.delete("http://localhost:3000/users/" + id)
+                this.$axios.delete("/users/" + id)
                     .then((response) => {
                         this.$router.push({path: "/", query: {alert: "用户删除成功!"}});
                     })

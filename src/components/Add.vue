@@ -66,7 +66,7 @@
                         profession: this.customer.profession,
                         profile: this.customer.profile
                     }
-                    this.$axios.post("http://localhost:3000/users", newCustomer)
+                    this.$axios.post("/users", newCustomer)
                         .then((response) => {
                             // console.log(response);
                             this.$router.push({name: "home", params: {alert: "用户信息添加成功!"}});
