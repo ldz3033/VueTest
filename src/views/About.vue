@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <about></about>
-  </div>
+    <div>
+        <about></about>
+    </div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@
     import About from '@/components/About.vue'
 
     export default {
-    //    name: 'about1',
+        //    name: 'about1',
         components: {
             About,
         }
