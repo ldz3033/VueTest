@@ -13,11 +13,13 @@ export default new Vuex.Store({
             state.customers = data;
         },
         removeCustomer(state, data) {
-            state.customers.forEach((item, index) => {
+            state.customers.splice(
+                state.customers.findIndex(item=>item.id==data),1);
+/*            state.customers.forEach((item, index) => {
                 if (item.id == data) {
                     state.customers.splice(index, 1);
                 }
-            })
+            })*/
         },
         setAlert(state,data){
             state.alert=data;
