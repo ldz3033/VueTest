@@ -1,6 +1,6 @@
 <template>
     <div class="customers container">
-        <Alert v-if="alert" v-bind:message="alert"></Alert>
+        <Alert v-if="alert"></Alert>
         <h1 class="page-header">用户管理系统</h1>
 
         <input type="text" class="form-control" placeholder="搜索" v-model="filterInput">
@@ -17,7 +17,7 @@
             </thead>
 
             <tbody>
-            <tr v-for="customer in filterBy1">
+            <tr v-for="customer in filterBy(filterInput)">
                 <td>{{customer.name}}</td>
                 <td>{{customer.phone}}</td>
                 <td>{{customer.email}}</td>
@@ -42,7 +42,6 @@
         data() {
             return {
                 //customers:[],
-                alert: "",
                 filterInput: ""
             }
         },
@@ -50,7 +49,7 @@
             fetchCustomers() {
                 this.$axios.get("/users")
                     .then((response) => {
-                        // console.log(response);
+                        console.log(response);
                         //this.customers = response.data;
                         this.$store.commit("setCustomers", response.data);
                     })
@@ -74,6 +73,9 @@
         computed: {
             filterBy1() {
                 return this.$store.state.customers;
+            },
+            alert() {
+                return this.$store.state.alert;
             }
         },
         created() {

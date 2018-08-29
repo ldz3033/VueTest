@@ -67,10 +67,11 @@
                     })
             },
             deleteCustomer(id) {
-                // console.log(id);
                 this.$axios.delete("/users/" + id)
                     .then((response) => {
-                        this.$router.push({path: "/", query: {alert: "用户删除成功!"}});
+                        //this.$router.push({path: "/", query: {alert: "用户删除成功!"}});
+                        this.$router.push({path: "/"}),
+                        this.$store.commit("setAlert", "用户删除成功!");
                     })
             }
         },

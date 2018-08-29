@@ -69,7 +69,9 @@
                     this.$axios.post("/users", newCustomer)
                         .then((response) => {
                             // console.log(response);
-                            this.$router.push({name: "home", params: {alert: "用户信息添加成功!"}});
+                            //this.$router.push({name: "home", params: {alert: "用户信息添加成功!"}});
+                            this.$router.push({name: "home",}),
+                            this.$store.commit("setAlert", "用户信息添加成功!");
                         })
                     e.preventDefault();
                 }

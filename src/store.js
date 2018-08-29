@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        customers: []
+        customers: [],
+        alert:"",
     },
     mutations: {
         setCustomers(state, data) {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
                     state.customers.splice(index, 1);
                 }
             })
+        },
+        setAlert(state,data){
+            state.alert=data;
         }
     },
     actions: {}

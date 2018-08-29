@@ -53,7 +53,7 @@
         },
         methods: {
             fetchCustomer(id) {
-                this.$axios.get("http://localhost:3000/users/" + id)
+                this.$axios.get("/users/" + id)
                     .then((response) => {
                         // console.log(response);
                         this.customer = response.data;
@@ -77,7 +77,9 @@
                     this.$axios.put("/users/" + this.$route.params.id, updateCustomer)
                         .then((response) => {
                             // console.log(response);
-                            this.$router.push({name: "home", params: {alert: "用户信息更新成功!"}});
+                            //this.$router.push({name: "home", params: {alert: "用户信息更新成功!"}});
+                            this.$router.push({name: "home",}),
+                                this.$store.commit("setAlert", "用户信息更新成功!");
                         })
                     e.preventDefault();
                 }

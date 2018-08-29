@@ -9,9 +9,14 @@
 <script>
     export default {
         name: 'alert',
-        props: ["message"],
         data() {
-            return {}
+            return {
+            }
+        },
+        computed:{
+            message(){
+                return this.$store.state.alert;
+            }
         }
     }
 </script>
