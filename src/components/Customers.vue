@@ -12,16 +12,20 @@
                 <th>电话</th>
                 <th>邮箱</th>
                 <th></th>
+                <th></th>
             </tr>
             </thead>
 
             <tbody>
-            <tr v-for="customer in filterBy(filterInput)">
+            <tr v-for="customer in filterBy1">
                 <td>{{customer.name}}</td>
                 <td>{{customer.phone}}</td>
                 <td>{{customer.email}}</td>
                 <td>
                     <router-link class="btn btn-default" v-bind:to="'/customer/'+customer.id">详情</router-link>
+                </td>
+                <td>
+                    <button class="btn btn-danger" v-on:click="removeCustomer(customer.id)">删除</button>
                 </td>
             </tr>
             </tbody>
@@ -55,9 +59,23 @@
                 return this.$store.state.customers.filter(function (customer) {
                     return customer.name.match(value);
                 })
+            },
+            removeCustomer(id) {
+                // console.log(id);
+                this.$axios.delete("/users/" + id)
+                    .then((response) => {
+                        this.$store.commit("removeCustomer", id);
+                    })
+            },
+            filterBy2() {
+                return this.$store.state.customers;
             }
         },
-        computed: {},
+        computed: {
+            filterBy1() {
+                return this.$store.state.customers;
+            }
+        },
         created() {
             if (this.$route.params.alert) {
                 this.alert = this.$route.params.alert;
