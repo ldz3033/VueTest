@@ -1,6 +1,6 @@
 <template>
     <div class="details container">
-        <router-link to="/" class="btn btn-default">返回</router-link>
+        <router-link to="/home" class="btn btn-default">返回</router-link>
         <h1 class="page-header">
             {{customer.name}}
 
@@ -62,7 +62,6 @@
             fetchCustomers(id) {
                 this.$axios.get("/users/" + id)
                     .then((response) => {
-                        console.log(response);
                         this.customer = response.data;
                     })
             },
@@ -70,8 +69,8 @@
                 this.$axios.delete("/users/" + id)
                     .then((response) => {
                         //this.$router.push({path: "/", query: {alert: "用户删除成功!"}});
-                        this.$router.push({path: "/"}),
-                        this.$store.commit("setAlert", "用户删除成功!");
+                        this.$router.push({name: "home"}),
+                            this.$store.commit(this.$types.SETALERT, "用户删除成功!");
                     })
             }
         },

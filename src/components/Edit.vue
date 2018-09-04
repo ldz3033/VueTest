@@ -70,7 +70,7 @@
                         phone: this.customer.phone,
                         email: this.customer.email,
                         education: this.customer.education,
-                        graduationschool: this.customer.graduationschool,
+                        graduationSchool: this.customer.graduationschool,
                         profession: this.customer.profession,
                         profile: this.customer.profile
                     }
@@ -79,7 +79,7 @@
                             // console.log(response);
                             //this.$router.push({name: "home", params: {alert: "用户信息更新成功!"}});
                             this.$router.push({name: "home",}),
-                                this.$store.commit("setAlert", "用户信息更新成功!");
+                                this.$store.commit(this.$types.SETALERT, "用户信息更新成功!");
                         })
                     e.preventDefault();
                 }

@@ -49,9 +49,8 @@
             fetchCustomers() {
                 this.$axios.get("/users")
                     .then((response) => {
-                        console.log(response);
                         //this.customers = response.data;
-                        this.$store.commit("setCustomers", response.data);
+                        this.$store.commit(this.$types.SETCUSTOMERS, response.data);
                     })
             },
             filterBy(value) {
@@ -60,10 +59,9 @@
                 })
             },
             removeCustomer(id) {
-                // console.log(id);
                 this.$axios.delete("/users/" + id)
                     .then((response) => {
-                        this.$store.commit("removeCustomer", id);
+                        this.$store.commit(this.$types.REMOVECUSTOMERS, id);
                     })
             },
             filterBy2() {
@@ -84,9 +82,6 @@
             }
             this.fetchCustomers();
         },
-        /*  updated(){
-            this.fetchCustomers();
-          },*/
         components: {
             Alert
         }
